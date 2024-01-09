@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #e1ebeb; /* Arka plan rengi */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #tabledegisiklik {
+            
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #tabledegisiklik td,
+        #tabledegisiklik th {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        #tabledegisiklik th {
+            background-color: #31b435; 
+            color: #1e1a1a; 
+        }
+
+        #tabledegisiklik td.blue {
+            background-color: #c12439; 
+            color: #633434; 
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Çarpma İşlem</h1>
+    <form name="toplam">
+        <label>1. Sayı :</label>
+        <input type="text" id="sayi1"><br><br>
+        <label>2. Sayı :</label>
+        <input type="text" id="sayi2"><br><br>
+
+        <input type="button" id="btnCarp" value="ÇARP" onclick="Carpma()">
+    </form>
+    <br>
+    <div id="kutuSonuc"></div>
+
+    <script>
+        function Carpma() {
+            var s1 = Number(document.getElementById("sayi1").value);
+            var s2 = Number(document.getElementById("sayi2").value);
+            var sonuc = s1 * s2;
+            document.getElementById("kutuSonuc").innerHTML = "Sonuç : " + sonuc;
+
+            var table = document.getElementById("tabledegisiklik");
+            table.innerHTML = "";
+
+            for (var a = 1; a <= 10; a++) {
+                var row = table.insertRow();
+                for (var b = 1; b <= 10; b++) {
+                    var cell = row.insertCell();
+                    cell.innerHTML = a * b;
+                    if (sonuc == a * b) {
+                        cell.classList.add("blue");
+                    }
+                }
+            }
+        }
+    </script>
+    <table id="tabledegisiklik">
+        <tr>
+            <th colspan="10">Çarpma Tablosu</th>
+        </tr>
+    </table>
+</body>
+
+</html>
